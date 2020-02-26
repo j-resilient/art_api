@@ -9,4 +9,9 @@
 #
 class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
+
+    has_many :art,
+        primary_key: :id,
+        foreign_key: :artist_id,
+        class_name: :Artwork
 end
