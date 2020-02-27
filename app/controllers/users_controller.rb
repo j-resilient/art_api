@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
     def index
-        render json: User.all
+        if params.has_key?(:query)
+            # where username includes query string at any point but in the same order
+            render json: User.where("username LIKE ?", "%#{params[:query]}%")
+        else
+            render json: User.all
+        end
     end
 
     def create
@@ -38,6 +43,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:username)
+        params.require(:user).permit(:username, :query)
     end
 end
