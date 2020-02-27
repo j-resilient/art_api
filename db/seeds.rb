@@ -6,6 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+Artwork.destroy_all
+ArtworkShare.destroy_all
+
+ApplicationRecord.connection.reset_pk_sequence!('users')
+ApplicationRecord.connection.reset_pk_sequence!('artworks')
+ApplicationRecord.connection.reset_pk_sequence!('artwork_shares')
+
+
 rose = User.create({ username: 'rose' })
 doctor = User.create({ username: 'doctor' })
 martha = User.create({ username: 'martha' })
