@@ -16,6 +16,7 @@ class User < ApplicationRecord
         class_name: :Artwork,
         dependent: :destroy
     
+    # retrieves artwork_shares for artwork that has been shared with user
     has_many :artwork_shares,
         primary_key: :id,
         foreign_key: :viewer_id,
@@ -23,6 +24,7 @@ class User < ApplicationRecord
         dependent: :destroy
 
     has_many :shared_artworks,
-        through: :shares,
+        through: :artwork_shares,
         source: :art
+        
 end
