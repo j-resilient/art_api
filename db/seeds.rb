@@ -31,3 +31,9 @@ shares = ArtworkShare.create([
     { artwork_id: Artwork.last.id, viewer_id: martha.id },
     { artwork_id: Artwork.last.id, viewer_id: donna.id },
 ])
+
+comments = Comment.create([
+    { author_id: rose.id, artwork_id: art.last.id, body: "One" },
+    { author_id: donna.id, artwork_id: art.last.id, body: "Two" },
+    { author_id: donna.id, artwork_id: art.first.id, body: "Three" }
+])
