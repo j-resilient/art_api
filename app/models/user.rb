@@ -23,6 +23,7 @@ class User < ApplicationRecord
         class_name: :ArtworkShare,
         dependent: :destroy
 
+    # retrieves artwork that has been shared with user
     has_many :shared_artworks,
         through: :artwork_shares,
         source: :art
